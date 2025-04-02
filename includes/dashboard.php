@@ -63,6 +63,8 @@ function bt_remove_dashboard_widgets() {
 	remove_action( 'welcome_panel','wp_welcome_panel' );
 	remove_action( 'try_gutenberg_panel', 'wp_try_gutenberg_panel'); // Try Gutenberg
 	remove_meta_box( 'dashboard_site_health', 'dashboard', 'normal' ); // Remove Site Health Widget
+    remove_meta_box( 'wpseo-dashboard-overview', 'dashboard', 'normal' );
+    remove_meta_box( 'wpseo-wincher-dashboard-overview', 'dashboard', 'normal' );
 }
 
 
@@ -87,8 +89,6 @@ add_filter( 'wp_is_application_passwords_available', '__return_false' );
 
 // Disable xmlrpc
 add_filter( 'xmlrpc_enabled', '__return_false' );
-
-
 
 // Disable JetPack Messages
 add_filter( 'jetpack_just_in_time_msgs', '__return_false', 99 );
@@ -138,15 +138,6 @@ function bt_deregister_gbstyles() {
 	wp_dequeue_style('wp-block-library');
 	wp_dequeue_style('wp-block-library-theme');
 }
-
-
-
-/**
- * Roles & Capabilities
- * @link  https://wordpress.stackexchange.com/questions/4191/allow-editors-to-edit-menus
- * Add editor the privilege to edit theme & menu
- * @since 1.0.0
- */
 
 add_filter('wp_mail_from', 'prefix_email_from');
 // Change default WordPress from  email address
