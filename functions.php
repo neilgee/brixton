@@ -34,3 +34,7 @@ add_filter( 'bricks/builder/i18n', function( $i18n ) {
 
 // Client File - for WP Login and backend dashboard admin clean up.
   include_once( get_stylesheet_directory() . '/includes/dashboard.php' );
+
+// Add Customizer Options and CSS output.
+	require_once( get_stylesheet_directory() . '/includes/customizer-panels.php' );
+	require_once( get_stylesheet_directory() . '/includes/inline-css-style-login.php' );

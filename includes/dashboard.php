@@ -42,7 +42,7 @@ function bt_remove_admin_bar() {
 }
 
 
-add_action('wp_dashboard_setup', 'bt_remove_dashboard_widgets' );
+add_action('wp_dashboard_setup', 'bt_remove_dashboard_widgets', 999 );
 /**
  *  Remove Dashboard Widgets
  *
@@ -63,17 +63,33 @@ function bt_remove_dashboard_widgets() {
 	remove_action( 'welcome_panel','wp_welcome_panel' );
 	remove_action( 'try_gutenberg_panel', 'wp_try_gutenberg_panel'); // Try Gutenberg
 	remove_meta_box( 'dashboard_site_health', 'dashboard', 'normal' ); // Remove Site Health Widget
+    remove_meta_box('wpseo_first_time_seo_configuration', 'dashboard', 'normal');
     remove_meta_box( 'wpseo-dashboard-overview', 'dashboard', 'normal' );
     remove_meta_box( 'wpseo-wincher-dashboard-overview', 'dashboard', 'normal' );
+    remove_meta_box( 'wpseo-dashboard-popular', 'dashboard', 'normal' );
 }
 
+add_action('admin_init', function() {
+/**
+ *  Remove Yoast First Time Config
+ *
+ * @since 1.0.0
+ */
+    if (class_exists('Yoast\WP\SEO\Helpers\Options_Helper')) {
+        $options_helper = YoastSEO()->helpers->options;
+        $options_helper->set('dismiss_configuration_workout_notice', true);
+    }
+});
 
-add_filter( 'wp_fatal_error_handler_enabled', '__return_false' );
+
 /**
  *  Stop Site Health Emails from beng sent to Admin
  *
  * @since 1.0.0
  */
+
+ // Disable Site Health Email Notifications
+add_filter( 'wp_fatal_error_handler_enabled', '__return_false' );
 
 // Disable auto-update email notifications for plugins.
 add_filter( 'auto_plugin_update_send_email', '__return_false' );
