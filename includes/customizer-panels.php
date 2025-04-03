@@ -77,7 +77,7 @@ function bt_register_theme_customizer( $wp_customize ) {
 
 add_action( 'customize_controls_enqueue_scripts', 'bt_customize_color_presets' );
 /** 
- * Add color presets for Beaver Builder Customizer Theme
+ * Add color presets for Brixton Customizer login styles panel
  * @since 1.0.0
  */
 function bt_customize_color_presets() {

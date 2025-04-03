@@ -38,3 +38,13 @@ add_filter( 'bricks/builder/i18n', function( $i18n ) {
 // Add Customizer Options and CSS output.
 	require_once( get_stylesheet_directory() . '/includes/customizer-panels.php' );
 	require_once( get_stylesheet_directory() . '/includes/inline-css-style-login.php' );
+// Gravity Forms
+	if ( class_exists( 'GFCommon' ) ) {
+		include_once( get_stylesheet_directory() . '/includes/gravity.php' );
+	}
+// ACF
+	if ( class_exists( 'acf' ) ) {
+		include_once( get_stylesheet_directory() . '/includes/acf.php' );
+	}
+// Set Up Global JS
+//wp_enqueue_script( 'global', get_stylesheet_directory_uri() . '/js/global.js', array( 'jquery' ), '1.0.0', true );
