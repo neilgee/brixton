@@ -35,10 +35,10 @@ function bt_theme_setup() {
   remove_action( 'wp_head', 'wp_locale' ); // Remove locale meta tag
 
 
-  if ( class_exists( 'Bricks' ) ) {
+
   // Bricks Builder is active
-      include_once( get_stylesheet_directory() . '/includes/bricks.php' );
-  }
+    include_once( get_stylesheet_directory() . '/includes/bricks.php' );
+ 
     // Gravity Forms
 	if ( class_exists( 'GFCommon' ) ) {
 		include_once( get_stylesheet_directory() . '/includes/gravity.php' );
