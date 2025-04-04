@@ -1,4 +1,10 @@
 <?php
+
+
+add_action( 'after_setup_theme', 'brixton_theme_setup', 15 ); 
+
+function bt_theme_setup() {
+  
 add_filter( 'bricks/builder/color_palette', function( $colors ) {
 
 // Override entire default color palette
@@ -43,3 +49,5 @@ add_filter( 'bricks/builder/i18n', function( $i18n ) {
 
   return $i18n;
 } );
+
+}
