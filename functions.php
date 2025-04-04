@@ -53,10 +53,6 @@ function bt_theme_setup() {
   remove_action( 'wp_head', 'wp_locale' ); // Remove locale meta tag
 
 
-  if ( class_exists( 'Bricks' ) ) {
-  // Bricks Builder is active
-      include_once( get_stylesheet_directory() . '/includes/bricks.php' );
-  }
     // Gravity Forms
 	if ( class_exists( 'GFCommon' ) ) {
 		include_once( get_stylesheet_directory() . '/includes/gravity.php' );
@@ -134,3 +130,27 @@ if ( function_exists( 'add_image_size' ) ) {
 
 
 }  // Closing After Set Up Hook
+
+/**
+ * Register custom elements
+ */
+add_action( 'init', function() {
+  $element_files = [
+    __DIR__ . '/elements/title.php',
+  ];
+
+  foreach ( $element_files as $file ) {
+    \Bricks\Elements::register_element( $file );
+  }
+}, 11 );
+
+
+/**
+ * Add text strings to builder
+ */
+add_filter( 'bricks/builder/i18n', function( $i18n ) {
+  // For element category 'custom'
+  $i18n['custom'] = esc_html__( 'Custom', 'bricks' );
+
+  return $i18n;
+} );
