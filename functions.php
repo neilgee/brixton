@@ -37,7 +37,7 @@ function bt_theme_setup() {
 
 
   // Bricks Builder is active
-    include_once( get_stylesheet_directory() . '/includes/bricks.php' );
+    include_once( get_stylesheet_directory() . '/includes/brixton.php' );
  
     // Gravity Forms
 	if ( class_exists( 'GFCommon' ) ) {
