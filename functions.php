@@ -19,13 +19,13 @@ add_filter( 'bricks/builder/color_palette', function( $colors ) {
     ['hex' => '#ffffff'],
     ['hex' => '#000000'],
     ['hex' => '#999999'],
-    ['hex' => '#22566b'],
-    ['hex' => '#9ec7d7'],
-    ['hex' => '#3c7085'],
-    ['hex' => '#ff8700'],
-    ['hex' => '#e3536c'],
-    ['hex' => '#6FA3B8'],
-    ['hex' => '#FFD230'],
+    ['hex' => '#444444'],
+    ['hex' => '#f8f8f8'],
+    ['hex' => '#666666'],
+    ['hex' => '#133337'],
+    ['hex' => '#008080'],
+    ['hex' => '#808080'],
+    ['hex' => '#101010'],
   ];
 
   return $colors;

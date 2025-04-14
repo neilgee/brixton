@@ -29,7 +29,7 @@ function bt_login_header_title() {
 }
 
 
-add_action('after_setup_theme', 'bt_remove_admin_bar');
+add_action('init', 'bt_remove_admin_bar');
 /**
  *  Remove admin bar for subscribers.
  *
@@ -168,3 +168,55 @@ function prefix_name_from( $new_name ) {
 	$blogname = get_option( 'blogname' );
 	return $blogname;
 }
+
+
+// Add 'Bricks' filter link to Posts and Pages lists
+add_filter( 'views_edit-post', 'bricks_filter_view' );
+add_filter( 'views_edit-page', 'bricks_filter_view' );
+
+function bricks_filter_view( $views ) {
+    global $typenow;
+
+    $meta_key = '_bricks_page_content_2';
+
+    $args = [
+        'post_type'     => $typenow,
+        'post_status'   => 'any',
+        'meta_key'      => $meta_key,
+        'meta_compare'  => 'EXISTS',
+        'fields'        => 'ids',
+        'nopaging'      => true,
+    ];
+
+    $bricks_posts = get_posts( $args );
+    $count = count( $bricks_posts );
+
+    $class = ( isset($_GET['bricks']) && $_GET['bricks'] === '1' ) ? 'current' : '';
+    $url   = add_query_arg( 'bricks', '1', admin_url( "edit.php?post_type={$typenow}" ) );
+
+    $views['bricks'] = sprintf(
+        '<a href="%s" class="%s">Bricks <span class="count">(%d)</span></a>',
+        esc_url( $url ),
+        esc_attr( $class ),
+        $count
+    );
+
+    return $views;
+}
+
+// Apply filtering to post/page list when Bricks filter is used
+add_action( 'pre_get_posts', function( $query ) {
+    if (
+        is_admin()
+        && $query->is_main_query()
+        && isset($_GET['bricks'])
+        && $_GET['bricks'] === '1'
+    ) {
+        $meta_query = (array) $query->get('meta_query');
+        $meta_query[] = [
+            'key'     => '_bricks_page_content_2',
+            'compare' => 'EXISTS',
+        ];
+        $query->set( 'meta_query', $meta_query );
+    }
+});
