@@ -30,7 +30,8 @@ function bt_css_inline_login() {
     $font_login = '-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif';
     
     $css = sprintf(' 
-        .login h1 a {
+        .login h1 a,
+        .login .wp-login-logo a {
             background-image: url(%s);
             width: 300px !important;
             height: 100px !important;

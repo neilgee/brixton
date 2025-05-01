@@ -8,3 +8,106 @@
  Version:      1.1
  Text Domain:  bricks
 */
+
+/*
+  Text 
+  
+  https: //www.fluid-type-scale.com/calculate?minFontSize=16&minWidth=320&minRatio=1.125&maxFontSize=18&maxWidth=1280&maxRatio=1.2&steps=xs%2Cs%2Cm%2Cl%2Cxl&baseStep=m&prefix=text&useContainerWidth=false&includeFallbacks=false&useRems=true&remValue=10&decimals=2&previewFont=Inter&previewText=Almost+before+we+knew+it%2C+we+had+left+the+ground&previewWidth=1280
+ Font size set to 62.5%
+
+--text-xs: clamp(1.26rem, -0.01vi + 1.27rem, 1.25rem);
+--text-s: clamp(1.42rem, 0.08vi + 1.4rem, 1.5rem);
+--text-m: clamp(1.6rem, 0.21vi + 1.53rem, 1.8rem);
+--text-l: clamp(1.8rem, 0.37vi + 1.68rem, 2.16rem);
+--text-xl: clamp(2.02rem, 0.59vi + 1.84rem, 2.59rem);
+
+Headings
+https: //www.fluid-type-scale.com/calculate?minFontSize=20&minWidth=320&minRatio=1.25&maxFontSize=22&maxWidth=1280&maxRatio=1.333&steps=h6%2Ch5%2Ch4%2Ch3%2Ch2%2Ch1%2Ctitle&baseStep=h4&prefix=h&useContainerWidth=false&includeFallbacks=false&useRems=true&remValue=10&decimals=2&previewFont=Inter&previewText=Almost+before+we+knew+it%2C+we+had+left+the+ground&previewWidth=320
+
+
+--h6: clamp(1.28rem, -0.04vi + 1.29rem, 1.24rem);
+--h5: clamp(1.6rem, 0.05vi + 1.58rem, 1.65rem);
+--h4: clamp(2rem, 0.21vi + 1.93rem, 2.2rem);
+--h3: clamp(2.5rem, 0.45vi + 2.36rem, 2.93rem);
+--h2: clamp(3.13rem, 0.82vi + 2.86rem, 3.91rem);
+--h1: clamp(3.91rem, 1.36vi + 3.47rem, 5.21rem);
+--h-title: clamp(4.88rem, 2.15vi + 4.2rem, 6.95rem);
+*/
+
+/* TEXT SIZE UTILITY CLASSES */
+
+/* You now don't need to set ANY typography in Theme Styles - not even body copy. The below code handles it all from here in one place. REMOVE any font sizes or line heights set for body copy in Bricks Theme Style typography settings. */
+/*
+.text-xl {
+    font-size: var(--text-xl);
+    line-height: 1.4;
+}
+
+.text-l {
+    font-size: var(--text-l);
+    line-height: 1.5;
+}
+
+body,
+.text-m {
+    font-size: var(--text-m);
+    line-height: 1.5;
+}
+
+.text-s {
+    font-size: var(--text-s);
+    line-height: 1.6;
+}
+
+.text-xs {
+    font-size: var(--text-xs);
+    line-height: 1.7;
+}
+*/
+
+/* HEADING SIZE UTILITY CLASSES */
+
+/*  REMOVE any font sizes or line heights set for all heading levels in Bricks Theme Style typography settings. */
+
+/*
+.h-title {
+    font-size: var(--h-title);
+    line-height: 1.05;
+}
+
+h1,
+.h1 {
+    font-size: var(--h1);
+    line-height: 1.1;
+}
+
+h2,
+.h2 {
+    font-size: var(--h2);
+    line-height: 1.2;
+}
+
+h3,
+.h3 {
+    font-size: var(--h3);
+    line-height: 1.3;
+}
+
+h4,
+.h4 {
+    font-size: var(--h4);
+    line-height: 1.4;
+}
+
+h5,
+.h5 {
+    font-size: var(--h5);
+    line-height: 1.5;
+}
+
+h6,
+.h6 {
+    font-size: var(--h6);
+    line-height: 1.6;
+}
+*/
