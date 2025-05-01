@@ -104,3 +104,14 @@ function bt_css_inline_admin_styles() {
         wp_add_inline_style($handle, $css);
     }
 }
+
+add_action('customize_controls_enqueue_scripts', 'bt_customize_color_palette');
+function bt_customize_color_palette() {
+    wp_enqueue_script(
+        'bt-customizer-palette',
+        get_stylesheet_directory_uri() . '/js/customizer-palette.js', 
+        ['jquery', 'wp-color-picker', 'customize-controls'], // wp-color-picker must be enqueued
+        false,
+        true
+    );
+}

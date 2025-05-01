@@ -31,6 +31,21 @@ add_filter( 'bricks/builder/color_palette', function( $colors ) {
   return $colors;
 } );
 
+
+
+
+	/**
+	 * Add support for custom logo change the dimensions to suit. Need WordPress 4.5 for this.
+	 * @since 1.0.0
+	 */
+	add_theme_support( 'custom-logo', array(
+		'height'      => 200, // set to your dimensions
+		'width'       => 300,// set to your dimensions
+		'flex-height' => true,
+		'flex-width'  => true,
+	));
+	
+
 add_action( 'after_setup_theme', 'bt_theme_setup', 15 );
 /**
  * Bricks theme set up
