@@ -119,3 +119,91 @@ h6,
     flex-direction: column;
     min-height: 100vh;
 }
+
+/* Lists & Icons */
+
+.tick-list li {
+    list-style-type: none;
+    position: relative;
+    margin-bottom: 10px;
+}
+
+.tick-list li::before {
+    content: '\f00c';
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    padding-right: 5px;
+    color: #000000;
+    font-size: 20px;
+    position: absolute;
+    left: -35px;
+    top: -5px;
+}
+
+/* Gravity Forms */
+
+.gform_wrapper label.gfield_label {
+    font-weight: 400 !important;
+    font-size: inherit;
+    color: #000;
+}
+
+/* Gravity Forms Validation Color */
+.gform_wrapper .gfield_required,
+.gform_wrapper .validation_message,
+.gform_wrapper .gfield_error .gfield_label,
+.gform_wrapper .gform_validation_errors>h2 {
+    color: #790000 !important;
+}
+
+.gform_wrapper div.validation_error {
+    color: #790000 !important;
+    border-top: 2px solid #790000 !important;
+    border-bottom: 2px solid #790000 !important;
+}
+
+.gform_wrapper li.gfield_error input:not([type="radio"]):not([type="checkbox"]):not([type="submit"]):not([type="button"]):not([type="image"]):not([type="file"]),
+.gform_wrapper li.gfield_error textarea,
+.gform_wrapper .gform_validation_errors,
+.gform_wrapper .gfield_validation_message,
+.gform_wrapper .validation_message,
+.gform_wrapper .gfield_error [aria-invalid="true"] {
+    border: 1px solid #790000 !important;
+}
+
+.gform_wrapper li.gfield.gfield_error,
+.gform_wrapper li.gfield.gfield_error.gfield_contains_required.gfield_creditcard_warning {
+    background-color: rgba(255, 223, 224, .25);
+    border-top: 1px solid #790000 !important;
+    border-bottom: 1px solid #790000 !important;
+}
+
+.gform_wrapper.gravity-theme .gfield_label {
+    font-weight: 400 !important;
+}
+
+.gform_button {
+    color: #fff !important;
+    background: #000;
+    border-radius: 3px;
+    border: 2px solid #000;
+    margin-left: 5px;
+    padding: 10px 30px;
+}
+
+.gform_button:hover {
+    color: #000 !important;
+    background: #fff;
+}
+
+@media (min-width: 641px) {
+    .gform_wrapper .top_label input.medium,
+    .gform_wrapper .top_label select.medium {
+        width: 100% !important;
+    }
+}
+
+/* Recaptcha */
+.grecaptcha-badge {
+    visibility: hidden;
+}
