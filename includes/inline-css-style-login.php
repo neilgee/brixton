@@ -1,15 +1,9 @@
 <?php
 
-add_action('login_enqueue_scripts', 'bt_css_inline_login', 1009);
-/**
- * Inline Style for login CSS
- *
- * @since 1.0.0
- */
 function bt_css_inline_login() {
     $handle = 'login';
-    
-    // Fetch theme modifications
+
+    // Fetch theme mods
     $theme_mods = [
         'hero_bg_image'          => get_theme_mod('hero_bg'),
         'login_color'            => get_theme_mod('bt_login_accent_color'),
@@ -19,16 +13,16 @@ function bt_css_inline_login() {
         'login_link_hover_color' => get_theme_mod('bt_login_link_hover_color'),
         'login_form_color'       => get_theme_mod('bt_login_form_color'),
         'login_form_text_color'  => get_theme_mod('bt_login_form_text'),
-        'login_logo'             => get_theme_mod('bt_login_logo')
+        'login_logo'             => get_theme_mod('bt_login_logo'),
     ];
-    
-    // Fetch WP custom logo
+
     $custom_logo_id = wp_get_attachment_image_src(get_theme_mod('custom_logo'), 'full');
     $custom_logo_url = (!empty($custom_logo_id)) ? $custom_logo_id[0] : '';
-    
-    $login_logo = isset($theme_mods['login_logo']) ? $theme_mods['login_logo'] : $custom_logo_url;
+
+    $login_logo = !empty($theme_mods['login_logo']) ? $theme_mods['login_logo'] : $custom_logo_url;
+
     $font_login = '-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif';
-    
+
     $css = sprintf(' 
         .login h1 a,
         .login .wp-login-logo a {
@@ -37,8 +31,9 @@ function bt_css_inline_login() {
             height: 100px !important;
             background-size: contain;
             background-position: center;
+            background-repeat: no-repeat;
         }
-        body {
+        body.login {
             background: %s;
             font-family: %s;
         }
@@ -62,8 +57,8 @@ function bt_css_inline_login() {
             color: %s;
             opacity: .8;
         }
-    ', 
-        esc_url($login_logo), 
+    ',
+        esc_url($login_logo),
         esc_attr($theme_mods['login_background_color']),
         esc_attr($font_login),
         esc_attr($theme_mods['login_color']),
@@ -75,14 +70,12 @@ function bt_css_inline_login() {
         esc_attr($theme_mods['login_link_color']),
         esc_attr($theme_mods['login_link_hover_color'])
     );
-    
+
     if (!empty($css)) {
         wp_add_inline_style($handle, $css);
     }
 }
-
-
-add_action('admin_enqueue_scripts', 'bt_css_inline_admin_styles', 1009);
+add_action('login_enqueue_scripts', 'bt_css_inline_login', 1009);
 /**
  * Inline Style for admin CSS (common + top bar)
  *

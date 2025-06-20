@@ -15,23 +15,25 @@
   https: //www.fluid-type-scale.com/calculate?minFontSize=16&minWidth=320&minRatio=1.125&maxFontSize=18&maxWidth=1280&maxRatio=1.2&steps=xs%2Cs%2Cm%2Cl%2Cxl&baseStep=m&prefix=text&useContainerWidth=false&includeFallbacks=false&useRems=true&remValue=10&decimals=2&previewFont=Inter&previewText=Almost+before+we+knew+it%2C+we+had+left+the+ground&previewWidth=1280
  Font size set to 62.5%
 
---text-xs: clamp(1.26rem, -0.01vi + 1.27rem, 1.25rem);
---text-s: clamp(1.42rem, 0.08vi + 1.4rem, 1.5rem);
---text-m: clamp(1.6rem, 0.21vi + 1.53rem, 1.8rem);
---text-l: clamp(1.8rem, 0.37vi + 1.68rem, 2.16rem);
---text-xl: clamp(2.02rem, 0.59vi + 1.84rem, 2.59rem);
+ Headings 
+ 
+ https: //www.fluid-type-scale.com/calculate?minFontSize=20&minWidth=320&minRatio=1.25&maxFontSize=22&maxWidth=1280&maxRatio=1.333&steps=h6%2Ch5%2Ch4%2Ch3%2Ch2%2Ch1%2Ctitle&baseStep=h4&prefix=h&useContainerWidth=false&includeFallbacks=false&useRems=true&remValue=10&decimals=2&previewFont=Inter&previewText=Almost+before+we+knew+it%2C+we+had+left+the+ground&previewWidth=320
 
-Headings
-https: //www.fluid-type-scale.com/calculate?minFontSize=20&minWidth=320&minRatio=1.25&maxFontSize=22&maxWidth=1280&maxRatio=1.333&steps=h6%2Ch5%2Ch4%2Ch3%2Ch2%2Ch1%2Ctitle&baseStep=h4&prefix=h&useContainerWidth=false&includeFallbacks=false&useRems=true&remValue=10&decimals=2&previewFont=Inter&previewText=Almost+before+we+knew+it%2C+we+had+left+the+ground&previewWidth=320
+:root {
+--text-xs: clamp(1.26rem, -0.09vi + 1.29rem, 1.18rem);
+--text-s: clamp(1.42rem, -0.01vi + 1.42rem, 1.42rem);
+--text-m: clamp(1.6rem, 0.1vi + 1.57rem, 1.7rem);
+--text-l: clamp(1.8rem, 0.25vi + 1.72rem, 2.04rem);
+--text-xl: clamp(2.02rem, 0.44vi + 1.88rem, 2.45rem);
 
-
---h6: clamp(1.28rem, -0.04vi + 1.29rem, 1.24rem);
---h5: clamp(1.6rem, 0.05vi + 1.58rem, 1.65rem);
---h4: clamp(2rem, 0.21vi + 1.93rem, 2.2rem);
---h3: clamp(2.5rem, 0.45vi + 2.36rem, 2.93rem);
---h2: clamp(3.13rem, 0.82vi + 2.86rem, 3.91rem);
---h1: clamp(3.91rem, 1.36vi + 3.47rem, 5.21rem);
---h-title: clamp(4.88rem, 2.15vi + 4.2rem, 6.95rem);
+--h-title: clamp(3.5rem, calc(3.5rem + ((1vw - 0.32rem) * 1.0417)), 4.5rem);
+    --h1: clamp(3rem, calc(3rem + ((1vw - 0.32rem) * 1.0417)), 4rem);
+    --h2: clamp(2.5rem, calc(2.5rem + ((1vw - 0.32rem) * 1.0417)), 3.5rem);
+    --h3: clamp(2.2rem, calc(2.2rem + ((1vw - 0.32rem) * 0.8333)), 3rem);
+    --h4: clamp(2rem, calc(2rem + ((1vw - 0.32rem) * 0.5208)), 2.5rem);
+    --h5: clamp(1.8rem, calc(1.8rem + ((1vw - 0.32rem) * 0.2083)), 2rem);
+    --h6: clamp(1.6rem, calc(1.6rem + ((1vw - 0.32rem) * 0.2083)), 1.8rem);
+}
 */
 
 /* TEXT SIZE UTILITY CLASSES */
@@ -206,4 +208,10 @@ h6,
 /* Recaptcha */
 .grecaptcha-badge {
     visibility: hidden;
+}
+
+/* # Site Navigation
+---------------------------------------------------------------------------------------------------- */
+.default-cursor .fl-has-submenu-container>a {
+    cursor: default;
 }
