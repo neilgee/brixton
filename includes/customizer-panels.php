@@ -32,6 +32,11 @@ function bt_register_theme_customizer( $wp_customize ) {
     );
 
     // Loop through and add settings & controls
+
+
+    $bt_palette = bt_get_brand_palette(); // Fetch from your global helper of Bricks color palette in functions.php
+
+
     foreach ( $color_settings as $setting_id => $setting ) {
         $wp_customize->add_setting( $setting_id, array( 'default' => $setting['default'] ) );
 
@@ -42,8 +47,12 @@ function bt_register_theme_customizer( $wp_customize ) {
                 'label'    => $setting['label'],
                 'section'  => 'bt_login_styles',
                 'settings' => $setting_id,
+                'choices'  => array(
+                    'palettes' => $bt_palette,
+                ),
             )
         ));
+        
     }
 
     // Get default WP custom logo

@@ -98,13 +98,27 @@ function bt_css_inline_admin_styles() {
     }
 }
 
-add_action('customize_controls_enqueue_scripts', 'bt_customize_color_palette');
-function bt_customize_color_palette() {
+// add_action('customize_controls_enqueue_scripts', 'bt_customize_color_palette');
+// function bt_customize_color_palette() {
+//     wp_enqueue_script(
+//         'bt-customizer-palette',
+//         get_stylesheet_directory_uri() . '/js/customizer-palette.js', 
+//         ['jquery', 'wp-color-picker', 'customize-controls'], // wp-color-picker must be enqueued
+//         false,
+//         true
+//     );
+// }
+
+add_action('customize_controls_enqueue_scripts', function () {
     wp_enqueue_script(
         'bt-customizer-palette',
-        get_stylesheet_directory_uri() . '/js/customizer-palette.js', 
-        ['jquery', 'wp-color-picker', 'customize-controls'], // wp-color-picker must be enqueued
+        get_stylesheet_directory_uri() . '/js/customizer-palette.js',
+        ['jquery', 'wp-color-picker', 'customize-controls'],
         false,
         true
     );
-}
+
+    wp_localize_script('bt-customizer-palette', 'BTCustomizer', [
+        'palette' => bt_get_brand_palette(),
+    ]);
+});

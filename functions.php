@@ -12,24 +12,27 @@ add_action( 'wp_enqueue_scripts', function() {
 
 });
 
+// Define Bricks COlor Palette
+function bt_get_brand_palette() {
+	return [
+		'#ffffff',
+		'#000000',
+		'#67C8C7',
+		'#FFC32D',
+		'#033335',
+		'#373637',
+		'#527071',
+    '#333333'
+	];
+}
+// Use global Bricks default palette
 add_filter( 'bricks/builder/color_palette', function( $colors ) {
-
-// Override entire default color palette
-  $colors = [
-    ['hex' => '#ffffff'],
-    ['hex' => '#000000'],
-    ['hex' => '#999999'],
-    ['hex' => '#444444'],
-    ['hex' => '#f8f8f8'],
-    ['hex' => '#666666'],
-    ['hex' => '#133337'],
-    ['hex' => '#008080'],
-    ['hex' => '#808080'],
-    ['hex' => '#101010'],
-  ];
-
-  return $colors;
-} );
+	$colors = array_map(
+		fn($hex) => ['hex' => $hex],
+		bt_get_brand_palette()
+	);
+	return $colors;
+});
 
 
 
