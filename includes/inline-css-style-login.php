@@ -109,7 +109,10 @@ function bt_css_inline_admin_styles() {
 //     );
 // }
 
-add_action('customize_controls_enqueue_scripts', function () {
+add_action('customize_controls_enqueue_scripts', 'bt_customize_color_palette');
+function bt_customize_color_palette() {
+    $palette = array_values(bt_get_brand_palette()); // Drop the keys so JS gets indexed list
+
     wp_enqueue_script(
         'bt-customizer-palette',
         get_stylesheet_directory_uri() . '/js/customizer-palette.js',
@@ -118,7 +121,7 @@ add_action('customize_controls_enqueue_scripts', function () {
         true
     );
 
-    wp_localize_script('bt-customizer-palette', 'BTCustomizer', [
-        'palette' => bt_get_brand_palette(),
+    wp_localize_script('bt-customizer-palette', 'btCustomizerPalette', [
+        'colors' => $palette,
     ]);
-});
+}

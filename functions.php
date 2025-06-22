@@ -12,30 +12,51 @@ add_action( 'wp_enqueue_scripts', function() {
 
 });
 
-// Define Bricks COlor Palette
+// Define Bricks Color Palette as an associative array
 function bt_get_brand_palette() {
 	return [
-		'#ffffff',
-		'#000000',
-		'#67C8C7',
-		'#FFC32D',
-		'#033335',
-		'#373637',
-		'#527071',
-    '#333333'
+    'white'     =>'#ffffff',
+		'black'     =>'#000000',
+    'grey'      =>'#999999',
+		'accent'    =>'#67C8C7',
+		'highlight' =>'#FFC32D',
+		'heading'   =>'#033335',
+    'text'      =>'#527071'
 	];
 }
-// Use global Bricks default palette
+
+// Add above to global Bricks default palette
 add_filter( 'bricks/builder/color_palette', function( $colors ) {
-	$colors = array_map(
+	$named_palette = bt_get_brand_palette();
+
+	// Convert to numerically indexed array
+	$colors = array_values(array_map(
 		fn($hex) => ['hex' => $hex],
-		bt_get_brand_palette()
-	);
+		$named_palette
+	));
+
 	return $colors;
 });
 
 
+add_action('wp_head', 'bt_output_color_palette_css');
+add_action('admin_head', 'bt_output_color_palette_css'); // Optional: include in WP admin
+// Add defined color palette above as CSS Variables to use anywhere
+function bt_output_color_palette_css() {
+  $palette = bt_get_brand_palette();
 
+  if (empty($palette)) {
+      return;
+  }
+
+  echo '<style id="bt-brand-palette">';
+  echo ':root {';
+  foreach ($palette as $name => $hex) {
+      printf('--color-%s: %s;', sanitize_title($name), esc_attr($hex));
+  }
+  echo '}';
+  echo '</style>';
+}
 
 	/**
 	 * Add support for custom logo change the dimensions to suit. Need WordPress 4.5 for this.

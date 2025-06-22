@@ -1,8 +1,7 @@
 (function ($) {
     console.log('Customizer script loaded');
 
-    // Pull the palette from the localized variable
-    const customColors = (typeof BTCustomizer !== 'undefined' && BTCustomizer.palette) ? BTCustomizer.palette : [];
+    const customColors = window.btCustomizerPalette?.colors || [];
 
     if (typeof $.wpColorPicker !== 'undefined') {
         wp.customize.bind('ready', function () {
@@ -15,8 +14,6 @@
 
             $('.wp-color-picker').iris('option', 'palettes', customColors);
         });
-    } else {
-        console.error("wpColorPicker is not defined!");
     }
 
     $(document).ready(function () {
@@ -28,12 +25,11 @@
                     controls: {
                         horiz: 'h',
                         vert: 's',
-                        strip: 'l'
+                        strip: 'l',
                     },
-                    palettes: customColors
+                    palettes: customColors,
                 });
             }
         });
     });
-
 })(jQuery);
